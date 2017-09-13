@@ -19,16 +19,12 @@ displayed on-screen (e.g., image name, size, resolution, date, etc.).
 * Please use the Flickr API (https://www.flickr.com/services/api/) and make direct requests to the API.
 * Usage of other third-party APIs/libraries/frameworks is not permitted.
 
-```
-Give examples
-```
 
-### App Requirements Comments
+## App Requirements Commented
 
 * On launch, users should be taken to a home screen that automatically displays geographically- relevant results based on their current location (initial launch experience).
-```
 
-// Get user's location
+```
 let locationManager = CLLocationManager()
 
 func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -43,34 +39,58 @@ locationManager.delegate = self
 locationManager.desiredAccuracy = kCLLocationAccuracyBest
 locationManager.requestWhenInUseAuthorization()
 locationManager.startUpdatingLocation()
-
 ```
 
-
 * Users should then be able to supply a search term to search all of Flickr (regardless of location) to receive results related to that search term.
+```
+if let results = results {
+// 3 The results get logged and added to the front of the searches array
+print("Found \(results.searchResults.count) matching \(results.searchTerm)")
+self.searches.insert(results, at: 0)
+
+// 4  have new data and need to refresh the UI
+self.collectionView?.reloadData()
+}
+
+```
 * Users should be able to see a list of available tags for the current set of results and filter the results by tag.
+
+```
+I am currently working on this requiremnt, but I am having issues with getting Flickr Tags.
+```
 * The app needs to asynchronously present the results as thumbnails on a grid.
-* The user should be able to tap on a thumbnail to view the image in its entirety, with metadata
-displayed on-screen (e.g., image name, size, resolution, date, etc.).
-
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
 
 ```
 Give the example
 ```
-
-And repeat
+* The user should be able to tap on a thumbnail to view the image in its entirety, with metadata
+displayed on-screen (e.g., image name, size, resolution, date, etc.).
 
 ```
-until finished
+
+// At the moment I am only getting the Photo and Title from Flickr
+// MARK - Segue
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+if segue.identifier == "showDetails" {
+
+if let indexPaths = collectionView?.indexPathsForSelectedItems {
+let destinationViewController = segue.destination as! PhotoViewController
+
+
+let flickrPhoto = photoForIndexPath(indexPath: indexPaths[0])
+
+destinationViewController.img = flickrPhoto.thumbnail!
+
+print(flickrPhoto.title)
+
+destinationViewController.txt = flickrPhoto.title
+
+}
+}
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Screenshots
 
 Explain how to run the automated tests for this system
 
@@ -100,23 +120,11 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Version 1.0 on 12/September/2017. 
 
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 

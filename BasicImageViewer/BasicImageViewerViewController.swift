@@ -107,9 +107,7 @@ extension BasicImageViewerViewController : UITextFieldDelegate {
         flickr.searchFlickrForTerm(textField.text!, lat: latitudeUser, lon: longitudeUser) {
             results, error in
             
-            
             activityIndicator.removeFromSuperview()
-            
             
             if let error = error {
                 // 2 Log any errors to the console.
@@ -171,7 +169,6 @@ extension BasicImageViewerViewController {
     }
     
     
-    
     // MARK - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
@@ -187,8 +184,6 @@ extension BasicImageViewerViewController {
                 print(flickrPhoto.title)
                 
                 destinationViewController.txt = flickrPhoto.title
-                
-                
                 
             }
         }
