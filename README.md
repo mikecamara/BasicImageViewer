@@ -104,7 +104,7 @@ destinationViewController.txt = flickrPhoto.title
 ![img_2623](https://user-images.githubusercontent.com/8085864/30360473-2986cb60-9884-11e7-8ad0-265aebf0c077.jpg)
 
 ### Requesting user's permission
-![img_2629](https://user-images.githubusercontent.com/8085864/30360748-bca0984e-9885-11e7-9f80-6952d4bbb640.jpg)
+![img_2629](https://user-images.githubusercontent.com/8085864/30360851-6a644f02-9886-11e7-834e-92adbdeb25a1.jpg)
 
 ### Initial launch experience, search based on user's location
 ![img_2628](https://user-images.githubusercontent.com/8085864/30360745-b905b610-9885-11e7-8852-bc8329534306.jpg)
@@ -116,8 +116,7 @@ destinationViewController.txt = flickrPhoto.title
 ![img_2625](https://user-images.githubusercontent.com/8085864/30360479-2eaca72c-9884-11e7-887c-a8e63301fa9b.jpg)
 
 ### Landscape view
-![img_2627](https://user-images.githubusercontent.com/8085864/30360752-bf4336ce-9885-11e7-90c5-4fd58f9fa4a4.jpg)
-
+![img_2627](https://user-images.githubusercontent.com/8085864/30360855-6bf76ac0-9886-11e7-8dc1-5c5ddda04e32.jpg)
 
 ## Deployment
 
