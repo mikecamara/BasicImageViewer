@@ -23,7 +23,36 @@ displayed on-screen (e.g., image name, size, resolution, date, etc.).
 Give examples
 ```
 
-### Installing
+### App Requirements Comments
+
+* On launch, users should be taken to a home screen that automatically displays geographically- relevant results based on their current location (initial launch experience).
+```
+
+// Get user's location
+let locationManager = CLLocationManager()
+
+func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+let location = locations[0]
+
+latitudeUser  = location.coordinate.latitude
+longitudeUser = location.coordinate.longitude
+
+}
+
+locationManager.delegate = self
+locationManager.desiredAccuracy = kCLLocationAccuracyBest
+locationManager.requestWhenInUseAuthorization()
+locationManager.startUpdatingLocation()
+
+```
+
+
+* Users should then be able to supply a search term to search all of Flickr (regardless of location) to receive results related to that search term.
+* Users should be able to see a list of available tags for the current set of results and filter the results by tag.
+* The app needs to asynchronously present the results as thumbnails on a grid.
+* The user should be able to tap on a thumbnail to view the image in its entirety, with metadata
+displayed on-screen (e.g., image name, size, resolution, date, etc.).
+
 
 A step by step series of examples that tell you have to get a development env running
 
