@@ -44,11 +44,11 @@ locationManager.startUpdatingLocation()
 * Users should then be able to supply a search term to search all of Flickr (regardless of location) to receive results related to that search term.
 ```
 if let results = results {
-// 3 The results get logged and added to the front of the searches array
+// The results get logged and added to the front of the searches array
 print("Found \(results.searchResults.count) matching \(results.searchTerm)")
 self.searches.insert(results, at: 0)
 
-// 4  have new data and need to refresh the UI
+// Have new data and need to refresh the UI
 self.collectionView?.reloadData()
 }
 
@@ -100,11 +100,23 @@ destinationViewController.txt = flickrPhoto.title
 
 ## Screenshots
 
+### Running on device
 ![img_2623](https://user-images.githubusercontent.com/8085864/30360473-2986cb60-9884-11e7-8ad0-265aebf0c077.jpg)
 
+### Requesting user's permission
+![img_2629](https://user-images.githubusercontent.com/8085864/30360748-bca0984e-9885-11e7-9f80-6952d4bbb640.jpg)
+
+### Initial launch experience, search based on user's location
+![img_2628](https://user-images.githubusercontent.com/8085864/30360745-b905b610-9885-11e7-8852-bc8329534306.jpg)
+
+### Search for term "puppy"
 ![img_2624](https://user-images.githubusercontent.com/8085864/30360475-2be40ee0-9884-11e7-944a-e2a81bb304f7.jpg)
 
+### Photo detail view
 ![img_2625](https://user-images.githubusercontent.com/8085864/30360479-2eaca72c-9884-11e7-887c-a8e63301fa9b.jpg)
+
+### Landscape view
+![img_2627](https://user-images.githubusercontent.com/8085864/30360752-bf4336ce-9885-11e7-90c5-4fd58f9fa4a4.jpg)
 
 
 ## Deployment
