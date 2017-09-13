@@ -100,11 +100,11 @@ destinationViewController.txt = flickrPhoto.title
 
 ## Screenshots
 
-![img_2623](https://user-images.githubusercontent.com/8085864/30360337-554b9d30-9883-11e7-8f91-1620a21eef8b.jpg)
+![img_2623](https://user-images.githubusercontent.com/8085864/30360473-2986cb60-9884-11e7-8ad0-265aebf0c077.jpg)
 
-![img_2624](https://user-images.githubusercontent.com/8085864/30360344-60d6a19a-9883-11e7-86d2-e1caac213e4e.jpg)
+![img_2624](https://user-images.githubusercontent.com/8085864/30360475-2be40ee0-9884-11e7-944a-e2a81bb304f7.jpg)
 
-![img_2625](https://user-images.githubusercontent.com/8085864/30360348-683918b4-9883-11e7-952a-1369f9e0df3c.jpg)
+![img_2625](https://user-images.githubusercontent.com/8085864/30360479-2eaca72c-9884-11e7-887c-a8e63301fa9b.jpg)
 
 
 ## Deployment
