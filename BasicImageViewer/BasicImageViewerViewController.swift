@@ -65,18 +65,23 @@ final class BasicImageViewerViewController: UICollectionViewController, CLLocati
             
             
             if let error = error {
-                // 2 Log any errors to the console.
+                // Log any errors to the console.
                 print("Error searching : \(error)")
                 return
             }
             
             if let results = results {
-                // 3 The results get logged and added to the front of the searches array
+                // The results get logged and added to the front of the searches array
                 print("Found \(results.searchResults.count) matching \(results.searchTerm)")
-                self.searches.insert(results, at: 0)
                 
-                // 4  have new data and need to refresh the UI
-                self.collectionView?.reloadData()
+                DispatchQueue.main.async {
+                    
+                    self.searches.insert(results, at: 0)
+                    
+                    // Have new data and need to refresh the UI
+                    self.collectionView?.reloadData()
+                    
+                }
             }
         }
     }
@@ -98,7 +103,7 @@ private extension BasicImageViewerViewController {
 // Add an extension to hold the text field delegate methods
 extension BasicImageViewerViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 1 match the given search term asynchronously. When the search completes, the completion block will be called with a the result set of FlickrPhoto objects, and an error (if there was one).
+        // Match the given search term asynchronously. When the search completes, the completion block will be called with a the result set of FlickrPhoto objects, and an error (if there was one).
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         textField.addSubview(activityIndicator)
         activityIndicator.frame = textField.bounds
@@ -110,18 +115,21 @@ extension BasicImageViewerViewController : UITextFieldDelegate {
             activityIndicator.removeFromSuperview()
             
             if let error = error {
-                // 2 Log any errors to the console.
+                // Log any errors to the console.
                 print("Error searching : \(error)")
                 return
             }
             
             if let results = results {
-                // 3 The results get logged and added to the front of the searches array
+                // The results get logged and added to the front of the searches array
                 print("Found \(results.searchResults.count) matching \(results.searchTerm)")
-                self.searches.insert(results, at: 0)
                 
-                // 4  have new data and need to refresh the UI
-                self.collectionView?.reloadData()
+                DispatchQueue.main.async {
+                    self.searches.insert(results, at: 0)
+                
+                    // Have new data and need to refresh the UI
+                    self.collectionView?.reloadData()
+                }
             }
         }
         
@@ -144,7 +152,7 @@ extension BasicImageViewerViewController {
         
     }
     
-    //2 The number of items in a section is the count of the searchResults
+    // The number of items in a section is the count of the searchResults
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         
@@ -189,16 +197,16 @@ extension BasicImageViewerViewController {
         }
     }
     
-    //3 This is a placeholder method just to return a blank cell – you’ll be populating it later.
+    // This is a placeholder method just to return a blank cell – you’ll be populating it later.
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //1 The cell coming back is now a FlickrPhotoCell
+        // The cell coming back is now a FlickrPhotoCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! FlickrPhotoCell
-        //2 get the FlickrPhoto representing the photo to display
+        // Get the FlickrPhoto representing the photo to display
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
         
         cell.backgroundColor = UIColor.white
-        //3  populate the image view with the thumbnail
+        // Populate the image view with the thumbnail
         cell.imageView.image = flickrPhoto.thumbnail
         
         
@@ -210,11 +218,11 @@ extension BasicImageViewerViewController {
 
 extension BasicImageViewerViewController : UICollectionViewDelegateFlowLayout {
     
-    //1 is responsible for telling the layout the size of a given cell
+    // Is responsible for telling the layout the size of a given cell
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2 Here, you work out the total amount of space taken up by padding
+        // Here, you work out the total amount of space taken up by padding
         let screenWidth = self.view.frame.width
         let cellWidth = (screenWidth/2.0)
         
@@ -222,14 +230,14 @@ extension BasicImageViewerViewController : UICollectionViewDelegateFlowLayout {
     }
     
     
-    // 3 This method controls the spacing between each line in the layout.
+    // This method controls the spacing between each line in the layout.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
     
-    // 3 This method controls the spacing between each line in the layout.
+    // This method controls the spacing between each line in the layout.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

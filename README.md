@@ -61,7 +61,15 @@ I am currently working on this requiremnt, but I am having issues with getting F
 * The app needs to asynchronously present the results as thumbnails on a grid.
 
 ```
-Give the example
+DispatchQueue.main.async {
+
+self.searches.insert(results, at: 0)
+
+// Have new data and need to refresh the UI
+self.collectionView?.reloadData()
+
+}
+
 ```
 * The user should be able to tap on a thumbnail to view the image in its entirety, with metadata
 displayed on-screen (e.g., image name, size, resolution, date, etc.).
@@ -69,6 +77,7 @@ displayed on-screen (e.g., image name, size, resolution, date, etc.).
 ```
 
 // At the moment I am only getting the Photo and Title from Flickr
+
 // MARK - Segue
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 if segue.identifier == "showDetails" {
@@ -89,36 +98,22 @@ destinationViewController.txt = flickrPhoto.title
 }
 ```
 
-
 ## Screenshots
 
-Explain how to run the automated tests for this system
+![img_2623](https://user-images.githubusercontent.com/8085864/30360337-554b9d30-9883-11e7-8f91-1620a21eef8b.jpg)
 
-### Break down into end to end tests
+![img_2624](https://user-images.githubusercontent.com/8085864/30360344-60d6a19a-9883-11e7-86d2-e1caac213e4e.jpg)
 
-Explain what these tests test and why
+![img_2625](https://user-images.githubusercontent.com/8085864/30360348-683918b4-9883-11e7-952a-1369f9e0df3c.jpg)
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+iOS deployment target 10.3 - iPhone/iPad
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* Swift
 
 
 ## Versioning
@@ -128,6 +123,5 @@ Version 1.0 on 12/September/2017.
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* @BPJohnson823 - Author of Flickr helper classes
+
